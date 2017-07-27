@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/cpdt
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://mrfishie.com
+  * I am cpdt (https://keybase.io/cpdt) on keybase.
+  * I have a public key with fingerprint 4785 4E70 9D80 3684 4A70  B91C EEB7 A728 775A EFCE
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01206f0fc329f1be22fec7c9934c1d278bff012ae9c2dd16da413ef90c546eb122fb0a",
+      "fingerprint": "47854e709d8036844a70b91ceeb7a728775aefce",
+      "host": "keybase.io",
+      "key_id": "eeb7a728775aefce",
+      "kid": "0101a7590bcf920fb5cef0fac04761a9ec120ecfb5dce14ec4d44daa2b0955c145510a",
+      "uid": "9fff99bcab55f7da4ea71e87c52b0819",
+      "username": "cpdt"
+    },
+    "service": {
+      "hostname": "mrfishie.com",
+      "protocol": "http:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1501149904,
+  "expire_in": 157680000,
+  "prev": "b6c5214e78e2579ff6832559f69b08f7422e194861fe290800cc53ea0b9e7464",
+  "seqno": 11,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.0.73
+Comment: https://keybase.io/crypto
+
+yMNwAnicbVJ7UFRVHF5eGiguOBFbWObVmUBwvffufR1mRBmTrGVw0MooYbmPc+EC
++2AfLAQMQmJjgJgWQoPBGEUWYBpBAzINhoxrgeBrGorhEepoBAQ7yYAMnWX0v84/
+Z87v933f+b7fOT2BPqoAr6n2xnDnu9P9Xr90n3KokvI6BvIxwSzlYdH5WCZc2WCW
+BG12Q6YiYdEYTpA4I+OyqCOBTAiQJGUosiIAOkokJJLlBFlGGB4CkZQkgpF4itBB
+GeAiTTFQIBBewHksCpMVUxq0WqyKyY5kKZajKcjiQOJwHcNRFM/iAiBECAWWZ0mO
+ZWkeyiJExHSzzcNA5gTeBrWKGdXQwbBi73/wT33jBM/SABdEGZC4LNAiRDF4EadY
+huABFFEwKKK6JEKCgiIlUZTE86SAA5oWCYqmiRXfjhU5IMsyAILICzQtsygk5FkC
+cqxIIwJHAA/QBq0m3ggRWrRIdqwwCkOVHAWZQkP1pHjSNVplxZauQK1oNiKexWq2
+m0VzFuqk2+2WaA/RnmfxIJ1QMDzRMAiKSUIjRIQcaLUpZhMWTSCkaFc8ogSNEwQF
+AE5FYTDXolihQfEgaJbhcLQ818AcJCkwyDLKy3KQpFkUi+F0JE0DmQEoiMxSJAkJ
+QHEMIUMS4IgsirQO8uh1IEsxFOZJlW0yI20C+eTTkKZNSTPxdocVYoWXuw/5qrwC
+VKv8vD1/SxXgH/T0xxVOqZeNbyi52GD/Qt3y4Q1nNlkmrya9tPFkQ/W2ifjZhmOT
+7tHUkyHpjTeVkcsJ+852Xbw0+vbsX8tbc6ZVteqlta99rj4e94Mr5lzotcy+zvud
+f0zu1Q9PZfr8m7jKa2LLzvfGx9vDH7tf7KrW1bRed+8Jmi+2JR77U13kf+Zs5Ed5
+S2MJLdLxKp9t1ha3XhtuTkmfGS/+aX1g4xZXM+UeTs2onbtr6j0/Pts3lDpYl93W
+HZxkezbs711zewqqzN7bz50qq9seGXHDJ7XkZ6fz5daR1T2a0rQdvX4J5bsL5S7f
++ZLQSOfM17euno494FflUm++Fnh4AHzVfCXM/wN3T3XD2osZRT86vtla/3xFicM4
+X0W2alTtj+9YXRea+yecU+D1oVzXr5rf9r5574sa5eGO4fFNnzVZMn3eKgDxHY+8
+v4uLen/ng+D2uJBK/npSS9nRjY8i1rsaDnyc0htXuSv8SFvpzeB+6Z+5IVA+M7Bv
+ufWBNiUgYn9nYocxq1ezhDU59RuS6/tClODa+1/eDdOUh74ydTo2w1CR9ty6Sws5
++5MXn1nU344/UTqcXNB94fvzSfpRr8rsMW1A8cit5NvaWOGTG0zHQtH05oQy2Hwk
+r6U+yFIvLL66Dvu2wHdN08ET+TEP+U8tFdwVjX73h4cG31lKcKxxHxxbXdMW2/57
+zFH/ohfUE61l9+40tvwH7K/Llg==
+=dDoB
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/cpdt
+
+==================================================================
