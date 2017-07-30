@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'><style>
+html, body {
+	padding:0;
+	margin:0;
+	width:100%;
+	height:100%;
+}
+body {
+	transition:background-color 0.2s;
+}
+body.alarm {
+	background-color:rgba(255,0,0,0.2);
+}
+body, input, button, select {
+	font-family: 'Raleway', sans-serif;
+}
+input, select, button {
+	border:solid 1px #CCC;
+}
+input:hover, select:hover, button:hover {
+	border:solid thin #999;
+}
+input:focus, button:focus {
+	border:solid 1px #666;
+}
+button {
+	margin-top:10px;
+	background-color:#F1F1F1;
+}
+button:active {
+	background-color:#CCC;
+}
+#outer {
+	display:table;
+	position:absolute;
+	height:100%;
+	width:100%;
+}
+#middle {
+	display:table-cell;
+	vertical-align:middle;
+	text-align:center;
+}
+#content {
+	margin-left:auto;
+	margin-right:auto;
+	height:100px;
+	display:inline-block;
+	position:relative;
+	/*text-align:center;*/
+}
+#title {
+	position:absolute;
+	top:-200px;
+	right:10px;
+	left:0;
+}
+#title input {
+	width:100%;
+}
+::-webkit-input-placeholder {
+	color:#999;
+}
+:-moz-placeholder {
+	color:#999;
+}
+::-moz-placeholder {
+	color:#999;
+}
+:-ms-input-placeholder {
+	color:#999;
+}
+#title input, #title {
+	padding:5px;
+	font-size:36px;
+	text-align:center;
+}
+.entry {
+	display:inline-block;
+	width:100px;
+	text-align:left;
+	font-size:24px;
+}
+.entry label {
+	font-size:12px;
+}
+.entry input {
+	font-size:24px;
+	width:70px;
+	padding:5px;
+}
+#types {
+	font-size:24px;
+	width:70px;
+	padding:5px;
+	text-align:center;
+}
+#content button {
+	width:99%;
+	padding:10px;
+}
+#content.timer .entry {
+	width:100px;
+}
+#content.timer #seconds {
+	width:50px;
+}
+#content #milliseconds {
+	display:none;
+	width:30px;
+}
+.out {
+	font-size:36px;
+	width:80%;
+	display:none;
+}
+#jquery_jplayer {
+	width:0;
+	height:0;
+}
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="script/soundmanager2-nodebug-jsmin.js"></script>
+<script src="time.js"></script>
+<script>
+if (window.webkitNotifications) window.Notification = window.webkitNotifications;
+else if (window.mozNotification) window.Notification = window.mozNotification;
+
+soundManager.setup({
+	url: 'swf/',
+	onready: function() {
+		soundManager.createSound({
+			id: 'complete',
+			url: 'alarm.mp3'
+		});
+	}
+});
+modules.load("time.json", function() {
+	$(function() {
+		// Check notification permissions
+		if (window.Notification && (window.Notification.permission == "default" || (window.Notification.checkPermission && window.Notification.checkPermission() != 0))) {
+			window.Notification.requestPermission();
+		}
+			
+		var timer_name = $.cookie('timer_name');
+		if (timer_name) $("#title input").val(timer_name);
+		
+		var previous_timer = $.cookie('timer_end');
+		if (previous_timer) {
+			var milli_difference = previous_timer - new Date().getTime();
+			if (milli_difference > 0) {
+				do_start_timer(milli_difference / 1000);
+			}
+		}
+		
+		modules.show([
+			"Seconds",
+			"Minutes",
+			"Hours",
+		]);
+		$("#load").remove();
+		$("#content").css("display", "");
+		$(".entry input").focus(function() {
+			if ($(this).val() == "00") $(this).val("");
+			else $(this).select();
+		}).blur(function() {
+			if ($(this).val() === "") $(this).val("00");
+			modules.showFromSeconds(modules.getTotalValue());
+		});
+		$("button").click(function() {
+			if ($("#content").hasClass("timer")) {
+				timer.stop();
+				$("#content").removeClass("timer");
+				$(".out, .entry input, #milliseconds, #types").css("display", "");
+				var title_txt = $("#title").text();
+				$("#title").text("");
+				$("<input type='text' />").appendTo("#title").val(title_txt);
+				$("#end").css("display", "none");
+				$(this).text("Start");
+				$.removeCookie("timer_end");
+				modules.show([
+					"Seconds",
+					"Minutes",
+					"Hours"
+				]);
+			} else {
+				do_start_timer(modules.getTotalValue());
+			}
+		});
+		$("#types").change(function(e) {
+			var selected_val = $("#types :selected").val();
+			modules.show(selected_val);
+			var add_new = $("#types option").first();
+			add_new.prop('selected', true);
+			if ($("#types option").length < 2) $("#types").css("display", "none");
+		});
+		$("#title input").focus(function() {
+			$(this).attr("placeholder", $(this).val()).val("");
+		}).blur(function() {
+			if ($.trim($(this).val()) == "") $(this).val($(this).attr("placeholder"));
+		});
+	});
+});
+function do_start_timer(length) {
+	timer.start(length, function() {
+		soundManager.play('complete');
+		$("button").text("Clear");
+		var i = 0;
+		var interval = setInterval(function() {
+			if (i > 6) clearInterval(interval);
+			i++;
+			
+			$("body").toggleClass("alarm");
+		}, 500);
+		utils.showAlert("Timer complete!", "Your timer for " + length + " seconds is complete.");
+		$("#end").css("display", "none");
+		$.removeCookie("timer_name");
+	});
+	var title_txt = $("#title input").val();
+	$("#title input").remove();
+	$("#title").text(title_txt);
+	$("#content").addClass("timer");
+	$(".out, #milliseconds").css("display", "inline-block");
+	$(".entry input, #types").css("display", "none");
+	$("button").text("Stop");
+	$("#title input").val("My Timer");
+	$("#end").css("display", "");
+	$("#end-time").text(utils.getFriendlyDate(new Date().getTime() + (length * 1000)));
+}
+</script>
+
+</head>
+
+<body>
+<div id="outer">
+<div id="middle">
+<img id="load" src="load.gif" title="Loading..." alt="Loading..." />
+<div id="content" class="" style="display:none;">
+<div id="title"><input type="text" value="My Timer" /></div>
+<div id="milliseconds" class="entry"><label></label></div>
+<select id="types">
+<option value='+' disabled selected>+</option>
+</select>
+<button>Start</button>
+<div id="end" style="display:none;">The timer will end <span id='end-time'></span>.</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Days of Christmas Creator</title>
+
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<section id="panel-1" class="panel" style="display: block; opacity: 1">
+<h1>Days of Christmas Creator!</h1>
+<button id="btn-start">Get Started</button>
+</section>
+
+<section id="panel-2" class="panel" style="opacity: 0">
+<h1>
+	The
+    <select id="select-days">
+        <option value="1">One</option>
+    	<option value="2">Two</option>
+        <option value="3">Three</option>
+        <option value="4">Four</option>
+        <option value="5">Five</option>
+        <option value="6">Six</option>
+        <option value="7">Seven</option>
+        <option value="8">Eight</option>
+        <option value="9">Nine</option>
+        <option value="10">Ten</option>
+        <option value="11">Eleven</option>
+        <option value="12" selected>Twelve</option>
+        <option value="13">Thirteen</option>
+        <option value="14">Fourteen</option>
+        <option value="15">Fifteen</option>
+        <option value="16">Sixteen</option>
+        <option value="17">Seventeen</option>
+        <option value="18">Eighteen</option>
+        <option value="19">Nineteen</option>
+        <option value="20">Twenty</option>
+    </select>
+    Day<span id="title-plural">s</span> of
+    <input id="text-name" type="text" value="Christmas" />
+</h1>
+<div id="options">
+</div>
+<button id="btn-done">View Lyrics</button>
+</section>
+
+<section id="panel-3" class="panel" style="opacity: 0">
+    <h1>The <span id="lyrics-days"></span> Day<span id="lyrics-plural">s</span> of <span id="lyrics-type"></span></h1>
+    <p class="permalink"><a id="permalink" href="">Permalink</a></p>
+    <div id="lyrics"></div>
+    <br>
+    <button id="btn-back">Return to Creator</button>
+</section>
+
+<div class="templates">
+    <div class="option" id="option-1">
+        <p>On the <span class="day"></span> day of <span class="type"></span>, my <input class="text-who" type="text" value="" /> gave to me...</p>
+        <div class="selector">
+            <span class="verb"></span> <input class="text-what" type="text" value="" />
+            <p class="previous"></p>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

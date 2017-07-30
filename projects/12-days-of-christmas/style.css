@@ -1,0 +1,103 @@
+body, html {
+	padding:0;
+	margin:0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+input, select, button {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 200px;
+}
+
+.panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+	min-height: 100%;
+
+	display: none;
+	opacity: 0;
+	transition: opacity 0.2s;
+	background-color:#FFF;
+	padding-top: 10%;
+	text-align: center;
+}
+
+#panel-1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#options {
+	width: 600px;
+	margin: 10px auto;
+	text-align: left;
+}
+.option {
+	background-color: #F1F1F1;
+	margin-bottom: 10px;
+}
+.option p {
+	margin: 0;
+}
+.option > p, .option div {
+	padding: 10px;
+}
+.option .selector {
+	background-color: #CCC;
+}
+.option .previous {
+    color: #666;
+    margin-top: 5px;
+}
+.option .previous span {
+    font-size: 0.9em;
+    display: block;
+}
+.option .previous > span {
+    font-size: 0.8em;
+}
+
+.option .type {
+    font-weight: bold;
+}
+
+.templates {
+	display: none;
+}
+
+#panel-3 h1 {
+    margin-bottom: 0;
+}
+
+#lyrics {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+#lyrics span {
+    display: block;
+}
+
+.permalink {
+    font-size: 0.8em;
+    color: #666;
+    margin: 0;
+}
+
+.permalink a {
+    color: #666;
+}
+.permalink a:hover {
+    text-decoration: none;
+}

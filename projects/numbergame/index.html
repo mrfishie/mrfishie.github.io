@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Number Game</title>
+    
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="numbergame.js"></script>
+    <script>
+        /**
+         * Game Displayer
+         *
+         * Provides a system to move data between the visual things and the game system
+         *
+         * List of events this hooks into:
+         *  .onstart
+         *  .onquestion
+         *  .onwrong
+         *  .onsuccess
+         *  .onendquestion
+         *  .generate
+         */
+        window.addEventListener("load", function() {
+            document.getElementById("start").addEventListener("click", function(e) {
+                // Event called when question is submitted
+                function questionSubmit(e) {
+					var val = document.getElementById("questiontext").value.trim();
+					if (val.length > 0) {
+						var content = parseFloat(val);
+						Game.answer(content);
+					}
+                    
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Caching elements to avoid continuous re-getting of commonly used ones
+                var $scorebox   = document.getElementById("scorebox"),
+                    $boxes      = document.getElementById("boxes"),
+                    $messages   = document.getElementById("messages"),
+                    $score, $percentage;
+                
+                // Called when the game starts - initialise the score field
+                Game.onstart = function() {
+                    var r = document.getElementById("message");
+                    r.parentElement.removeChild(r);
+                    
+                    $scorebox.innerHTML = "<strong><span id='percentage'>0</span>%</strong><br> Score: <span id='score'>0</span>";
+                    
+                    $percentage = document.getElementById("percentage");
+                    $score      = document.getElementById("score");
+                }
+                
+                // Called when a question starts - add the question <div> with the required text and register an event
+                Game.onquestion = function(text) {
+                    $boxes.innerHTML = "<div class='question' id='current'><p class='title'>" + text + "</p><form action='#' id='currentform'><input type='number' id='questiontext' /><button type='submit'>Answer</button></form><p id='response' class='response'></p></div>" + $boxes.innerHTML;
+                    document.getElementById("questiontext").focus();
+                    document.getElementById("currentform").addEventListener("submit", questionSubmit);
+                }
+                
+                // Called when a question was gotten wrong - shows a message and gives the element the 'wrong' class
+                Game.onwrong = function(remaining) {
+                    var t = " tries";
+                    if (remaining == 1) t = " try";
+                    var responses = [
+                        "Oh no! " + remaining + t + " remaining...",
+                        "Thats not right. You've got " + remaining + t + " remaining!",
+                        "Don't give up! " + remaining + t + " remaining..",
+                        "Nope. Only " + remaining + t + " remaining!"
+                    ];
+                    document.getElementById("response").innerHTML = random(responses);
+					toggleClass(document.getElementById("current"), "wrong", true);
+                    document.getElementById("questiontext").value = "";
+                }
+                
+                // Called when a question was gotten correct - shows a motivational message and gives the element the 'correct' class
+                Game.onsuccess = function(value) {
+                    var responses = [
+                        "Very good!",
+                        "Excellent!",
+                        "Nice work!",
+                        "Keep up the good work!",
+                        "Awesome!",
+                        "Good job!"
+                    ];
+                    document.getElementById("response").innerHTML = random(responses);
+                    
+                    var $c = document.getElementById("current");
+					toggleClass($c, "wrong", false);
+					toggleClass($c, "correct", true);
+                }
+                
+                // Called when the person gets a question wrong after the max amount of tries - false is returned to indicate that the game should continue
+                Game.onend = function() {
+                    var responses = [
+                        /*"<span>Seriously.</span> Please <em>actually try</em>...",
+                        "<span>You suck.</span> Please tell your instructor.",
+                        "<span>Good job.</span> Now, <em>actually try</em> this time, please.",
+                        "<span>Really?</span> I'm sure that you can do better than that.",*/
+						
+						"<span>Come on!</span> You can do better than that!",
+						"<span>Oops</span> People make mistakes.. Try this question.",
+                    ];
+                    
+                    $messages.innerHTML = "<div>" + random(responses) + "</div>" + $messages.innerHTML;
+                    
+                    var iresponses = [
+                        "Better luck next-time...",
+                        "Too bad.",
+                        "Oops. Try another question."
+                    ];
+                    document.getElementById("response").innerHTML = random(iresponses);
+                    
+                    return false;
+                }
+                
+                // De-registers the current question as the current question, and removes the submit event listener
+                Game.onendquestion = function(percentage, score, correct, answer) {
+                    percentage = Math.round(percentage);
+                    
+                    $percentage.innerHTML = percentage;
+                    $score.innerHTML = score;
+                    
+                    var newElt = document.createElement("p");
+                    newElt.innerHTML = "Answer: " + answer;
+                    
+                    var $form = document.getElementById("currentform");
+                    $form.removeEventListener("submit", questionSubmit);
+                    $form.parentNode.replaceChild(newElt, $form);
+                    //newElt.classList.toggle("inputtext", true);
+					toggleClass(newElt, "inputtext", true);
+                    
+                    document.getElementById("current").id = "";
+                    document.getElementById("response").id = "";
+                }
+                
+                // Generates a question for the game
+                Game.generate = function() {
+					var type = random(0, 3), num1, num2;
+					
+					var config = {
+						"plus": {'min': 2, 'max': 20},
+						"minus": {'min': 2, 'max': 20},
+						"times": {'min': 2, 'max': 12},
+						"divide": {'min': 2, 'max': 12}
+					};
+                    
+                    var result, operand = "";
+                    switch(type) {
+                        case 0:
+							num1 = random(config.plus.min, config.plus.max);
+							num2 = random(config.plus.min, config.plus.max);
+                            result = num1 + num2;
+                            operand = "plus";
+                            break;
+                        case 1:
+							num1 = random(config.minus.min, config.minus.max);
+							num2 = random(config.minus.min, num1);
+                            result = num1 - num2;
+                            operand = "minus";
+                            break;
+                        case 2:
+							num1 = random(config.times.min, config.times.max);
+							num2 = random(config.times.min, config.times.max);
+                            result = num1 * num2;
+                            operand = "times";
+                            break;
+						case 3:
+							result = random(config.divide.min, config.divide.max);
+							num2 = random(config.divide.min, config.divide.max);
+							num1 = result * num2;
+							operand = "divided by";
+                    }
+                    
+                    return {
+                        "text"  : "What is " + num1 + " " + operand + " " + num2 + "?",
+                        "answer": result
+                    };
+                }
+                
+                // Start the game!
+                Game.start();
+                
+                e.preventDefault();
+                return false;
+            });
+        });
+        
+        function random(min, max, increments) {
+            if (Array.isArray(min)) return min[Math.floor(Math.random() * min.length)];
+            else if (arguments.length < 2) min = 0;
+			
+			var shouldfloor = true;
+			if (increments === false && typeof increments !== "undefined") {
+				shouldfloor = false;
+				increments = 1;
+			}
+			if (typeof increments === "undefined") increments = 1;
+			max *= 1 / increments;
+            
+			var r = Math.random() * (max - min + 1) + min;
+			if (shouldfloor) r = Math.floor(r) * increments;
+			return r;
+        }
+		function toggleClass(elt, name, on) {
+			var classlist = elt.classList;
+			if (typeof on === 'undefined') on = !classlist.contains(name);
+			
+			if (on && !classlist.contains(name)) classlist.add(name);
+			if (!on && classlist.contains(name)) classlist.remove(name);
+		}
+    </script>
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <style>
+        body, html {
+            padding:0;
+            margin:0;
+            font-family:'Open Sans', sans-serif;
+        }
+        h1, p {
+            margin:0;
+        }
+        .clear {
+            clear:both;
+        }
+        
+        header {
+            padding:10px;
+            background-color:#F1F1F1;
+            height:50px;
+			position:fixed;
+			top:0;
+			right:0;
+			left:0;
+        }
+        header h1 {
+            float:left;
+        }
+        #scorebox {
+            display:inline-block;
+            float:right;
+            font-size:18px;
+            text-align:right;
+			margin-top:-10px;
+        }
+        #scorebox button {
+            font-family:inherit;
+            font-size:inherit;
+			margin-top:10px;
+        }
+		#scorebox strong {
+			font-size:24px;
+		}
+        
+        #boxes, #message {
+            padding:5px;
+        }
+		#boxes {
+			margin-top:70px;
+		}
+        
+        .question {
+            width:200px;
+            height:200px;
+            padding:5px;
+            margin:5px;
+            border:solid 5px #AAA;
+            float:left;
+        }
+        .question .title {
+            font-weight:bold;
+        }
+        .question input {
+            width:100px;
+        }
+        .question .inputtext {
+            text-align:center;
+            padding:5px 0 5px 0;
+        }
+        .question.wrong .response {
+            color:red;
+        }
+        .question.wrong {
+            border-color:red;
+            background-color:rgba(255,0,0,0.2);
+        }
+		.question.correct .response {
+            color:green;
+        }
+		.question.correct {
+            border-color:green;
+            background-color:rgba(0,128,0,0.2);
+        }
+        #current {
+            background-color:transparent;
+        }
+        
+        #messages {
+            position:fixed;
+            top:80px;
+            right:10px;
+        }
+        #messages div {
+            width:150px;
+            padding:5px;
+            border:solid 5px blue;
+            background-color:rgb(200,200,255);
+            margin-bottom:10px;
+        }
+        #messages div span {
+            display:block;
+            font-weight:bold;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Number Game</h1>
+    <div id="scorebox">
+        <button id="start">Start</button>
+    </div>
+    <div class="clear"></div>
+</header>
+
+<div id="messages"></div>
+
+<div id="boxes">
+    <p id="message">Click 'Start' in the upper right hand corner to begin.</p>
+</div>
+
+</body>
+</html>

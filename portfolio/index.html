@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio - Tom Barham</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="../style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<header>
+    <h1><a href="../">TOM BARHAM</a></h1>
+    <p>PROGRAMMING / DESIGN / RENDERING / CINEMATOGRAPHY</p>
+
+    <nav>
+        <a href="../demoscene.html">DEMOSCENE</a><a href="index.html" class="current">PORTFOLIO</a><a href="../blog/index.html">BLOG</a><a href="../about.html">ABOUT</a>
+    </nav>
+</header>
+
+<section class="doc portfolio">
+    <h2>2017</h2>
+
+    <div>
+        <img src="../img/monad.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://monadgroup.github.io" target="_blank">MONAD</a></h3>
+            <p>
+                This is the homepage for MONAD,
+                <a href="../demoscene.html">my demogroup</a>. It is developed
+                in modern HTML and CSS, with some custom Javascript for a center
+                carousel.
+            </p>
+
+            <nav>
+                <a href="https://monadgroup.github.io" target="_blank">SITE</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/omeda.png" width="200" height="200"/>
+        <div>
+            <h3><a href="omeda.html">OMEDA</a></h3>
+            <p>
+                64 intros (see
+                <a href="../demoscene.html">my writeup on the demoscene</a>),
+                have to include a software synthesizer to create music, as it's
+                not possible to embed a full song saved as an mp3 or similar in
+                an executable and have it come in at less than 64kib in size.
+            </p>
+            <p>
+                Omeda, developed in mid-2017, is MONAD's synthesizer. It comes
+                in three components: the editor, the VSTi, and the replayer.
+            </p>
+            <p>
+                The editor is a tool, written in C# with WPF, that allows
+                editing a node graph. This node graph is then converted to a flat
+                format and sent to the VSTi, written in mixed-mode C++, which
+                exists in a DAW, to tell it  how to synthesize sounds. When
+                exporting a demo, the replayer is embedded in the demo
+                executable file along with the song and instrument data. It then
+                plays the song in realtime.
+            </p>
+
+            <nav>
+                <a href="omeda.html">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/functor.png" width="200" height="200"/>
+        <div>
+            <h3><a href="functor.html">FUNCTOR</a></h3>
+            <p>
+                In order to create 64k intros (see
+                <a href="../demoscene.html">my writeup on the demoscene</a>),
+                it is beneficial to have a 'tool' that allows you to quickly
+                iterate on the intro, and do things like manage animations.
+            </p>
+            <p>
+                Mostly completed in mid-2017, Functor is MONAD's graphical
+                tool. While the UI, created with WPF, is relatively simple,
+                Functor is actually a very powerful piece of software -
+                it features a custom declarative language (parsed with a custom
+                recursive descent parser) called PDL, used to declare graphic
+                pipelines
+                and shader interaction, and also integrates with a tracker for
+                animating properties. Additionally, Functor has an export
+                feature which compiles the project to an executable, and
+                optionally compresses it.
+            </p>
+            <p>
+                Functor itself is written in C# 7 and WPF, while the backend
+                'player' is written in C++ with OpenGL.
+            </p>
+            <p>
+                When I first learnt about the demoscene in late 2016, I knew
+                absolutely nothing about realtime rendering. Throughout the
+                development of Functor, I have learnt about OpenGL, shaders,
+                how the graphics card works, how post-processing works,
+                rendering techniques, and more - as a result, it has been a very
+                valuable experience.
+            </p>
+
+            <nav>
+                <a href="functor.html">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <h2>2016</h2>
+
+    <div>
+        <img src="../img/mysterious-mister-e.png" width="200" height="200"/>
+        <div>
+            <h3><a href="mysterious-mister-e.html">THE MYSTERIOUS MISTER E</a></h3>
+            <p>
+                Originally created for a school IT assignment, The Mysterious
+                Mister E is a short film about censorship and oppressive
+                governments. It follows the story of Mister E, an enigmatic
+                vigilante courier.
+            </p>
+            <p>
+                In the film, I largely focused on storyline and cinematics
+                (although due to limited time I was unable to polish these
+                completely). I tried to create a storyline which was open
+                to interpretation and made the watcher think, while also being
+                immersive and interesting.
+            </p>
+            <p>
+                After submitting the assignment, I also submitted the short film
+                to Screen It!, an annual high-school film competition run by
+                the Australian Centre for the Moving Image (ACME). I was humbled
+                to win the national senior animation category.
+            </p>
+            <p>
+                The short film, with both real-time and animated components, was
+                quite ambitious. Throughout the project, I learnt many advanced
+                concepts in Adobe After Effects and Adobe Premiere, the former
+                of which was used for most animation. Additionally, the project
+                taught me many important things about cinematography and
+                story-telling, which I am now using in the demoscene.
+            </p>
+
+            <nav>
+                <a href="mysterious-mister-e.html">WATCH</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/slinky.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/cpdt/slinky" target="_blank">SLINKY</a></h3>
+            <p>
+                In mid-2016, Microsoft announced the Windows Subsystem for
+                Linux, a project which aimed to allow running Linux-compatible
+                software on Windows without a virtual machine.
+            </p>
+            <p>
+                Very early on, I created a small utility for WSL, which allowed
+                'linking' a command on Windows to one on Linux (that is, running
+                the command on Windows actually runs it on Linux). This became
+                <a href="https://github.com/cpdt/slinky" target="_blank">Slinky</a>.
+            </p>
+            <p>
+                Slinky is a small utility written in Bash and Batch, and so far
+                has gotten some attention from people in CODE Network and on
+                Hacker News (although I have not been particularly vigilante
+                about advertising it). Nowadays it is largely unmaintained, but
+                that is primarily because it works, and works well.
+            </p>
+
+            <nav>
+                <a href="https://github.com/cpdt/slinky" target="_blank">GITHUB</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/codenetwork.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/cpdt/codenetwork" target="_blank">CODE NETWORK</a></h3>
+            <p>
+                CODE Network is a large community of developers primarily in
+                Brisbane. Mid-2016, they had a challenge to create a new site
+                for them.
+            </p>
+            <p>
+                As part of this challenge, I designed and created
+                <a href="https://github.com/cpdt/codenetwork" target="_blank">a site</a>
+                using
+                modern responsive HTML and CSS, and minimalistic degradable
+                Javascript. Additionally, I created a backend written in NodeJS,
+                using the lightweight backend engine I had developed for this
+                project called
+                <a href="https://github.com/cpdt/trea" target="_blank">trea</a>,
+                and MongoDB.
+            </p>
+            <p>
+                While the CODE Network competition didn't end up happening (due
+                to administration issues), this project was beneficial as it
+                allowed me to update my skills in full-stack development (many
+                of the large projects I had done previously used PHP or a
+                bloated web framework such as Angular and SailsJS). Whenever
+                designing websites, I always try to minimize bloat and ensure
+                that the site loads fast and runs well (typically, this means
+                reducing Javascript and not using big libraries like React when
+                they're not needed) - you can do a lot with just HTML and CSS.
+            </p>
+
+            <nav>
+                <a href="https://github.com/cpdt/codenetwork" target="_blank">GITHUB</a><a href="codenetwork.html">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <h2>2015</h2>
+
+    <div>
+        <img src="../img/toxic-spanner.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/toxic-spanner" target="_blank">TOXIC SPANNER</a></h3>
+            <p>
+                <a href="https://github.com/toxic-spanner" target="_blank">Toxic Spanner</a>
+                was a project to create a programming language
+                that could be 'compiled' to circuitry in the game Minecraft,
+                called 'redstone'. This was comprised of a macro language called
+                MCA, a compiler, and a library and framework to create complex
+                systems in the language.
+            </p>
+            <p>
+                The compiler was developed in NodeJS, and used
+                <a href="https://zaa.ch/jison/" target="_blank">JISON</a> for
+                parsing. It would then emit output in a format called 'MCIL',
+                which was converted to Minecraft blocks by a separate program.
+            </p>
+            <p>
+                Unfortunately, the project was discontinued before the library
+                or framework were completed, largely due to not having time
+                due to other commitments. Despite this, the project (especially
+                the compiler) were a good learning experience, and many of the
+                techniques learnt were beneficial to future projects, such as
+                Functor.
+            </p>
+
+            <nav>
+                <a href="https://github.com/cpdt/codenetwork" target="_blank">GITHUB</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/the-problem.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/The-Problem/The-Problem" target="_blank">THE PROBLEM</a></h3>
+            <p>
+                The Problem was a bug tracker project created by myself and two
+                friends for a school IT assignment. Designed to be locally
+                hosted, it allowed administrators to create bug sections and
+                configure many different settings, while users could comment on
+                and upvote bugs.
+            </p>
+            <p>
+                The site, which was primarily designed by myself, was inspired
+                by Google's Material design specification, and utilized various
+                modern HTML/CSS features. On the backend, the site was written
+                in PHP, using my LimePHP framework (which was initially
+                developed for Mozzo). Various performance enhancements were made
+                to LimePHP, allowing The Problem to be very fast and lightweight.
+            </p>
+
+            <nav>
+                <a href="https://github.com/The-Problem/The-Problem" target="_blank">GITHUB</a><a href="the-problem.html">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/larwan.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/mrfishie/larwan" target="_blank">LARWAN</a></h3>
+            <p>
+                In late 2015, while working on a potential game concept, I
+                created a Javascript 2D canvas rendering library called Larwan.
+                The goal was to create a system that was easy to use and
+                understand, while also being fast and allowing complex scenes to
+                be displayed.
+            </p>
+            <p>
+                The library used modern (at the time) Javascript features to
+                create a tree-based rendering system that would batch
+                scene modifications and only re-render parts of the canvas that
+                had changed.
+            </p>
+            <p>
+                After some progress on the library, I ended up being too busy
+                with schoolwork to continue development and had to stop. Despite
+                this, developing this library helped me learn many of the
+                concepts in rendering.
+            </p>
+
+            <nav>
+                <a href="https://github.com/mrfishie/larwan" target="_blank">GITHUB</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/artemis.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/artemis-nerds/node-asbs-server" target="_blank">ARTEMIS SBS SERVER</a></h3>
+            <p>
+                In early 2015 I created a custom server written in NodeJS for
+                <a href="http://artemis.eochu.com/" target="_blank">Artemis Spaceship Bridge Simulator</a>,
+                with the purpose of allowing the Artemis community to customize
+                and build new features for the game, while also being suitable
+                for the MMO community (which the official game server was not).
+            </p>
+            <p>
+                This project involved reverse-engineering the Artemis server
+                protocol and behaviour. Through the efforts of this project and
+                others (<a href="https://github.com/IvanSanchez/artemis-glitter" target="_blank">artemis-glitter</a>
+                and <a href="https://github.com/rjwut/ArtClientLib" target="_blank">ArtClientLib</a>,
+                the latter of which had already reverse-engineered large parts
+                of the protocol),
+                the <a href="https://github.com/artemis-nerds" target="_blank">Artemis Nerds</a>
+                group was formed, with the primary goal of comprehensively
+                documenting many of the games protocols.
+            </p>
+            <p>
+                While the custom Artemis server is now discontinued, and Artemis
+                Nerds is rather inactive, throughout this project I learnt
+                about the principles of reverse-engineering, game servers,
+                working with a remote team, and how to compromise on team
+                decisions.
+            </p>
+
+            <nav>
+                <a href="https://github.com/artemis-nerds/node-asbs-server" target="_blank">GITHUB</a>
+            </nav>
+        </div>
+    </div>
+
+    <h2>2014</h2>
+
+    <div>
+        <img src="../img/potential.png" width="200" height="200"/>
+        <div>
+            <h3><a href="https://github.com/mrfishie/potential">POTENTIAL</a></h3>
+            <p>
+                Potential was a game I created and developed for a school IT
+                assignment. The assignment, which put an emphasis on
+                technology rather than enjoyability, challenged us to create
+                a game that would teach the player a skill. The skill I chose?
+                Hand-eye coordination.
+            </p>
+            <p>
+                The game was developed in Javascript, and rendered with the
+                Canvas API. In order to accomplish this, I created a
+                minimalistic game engine which used a component-based
+                architecture for rendering, and supported complex animations
+                and events. This was utilized in 'Music' mode, where the game
+                background and procedural world would change to the music.
+            </p>
+            <p>
+                Unfortunately, as the game contained copyrighted music from a
+                similar game called VVVVVV, I am unable to release it online.
+                The source code is <a href="https://github.com/mrfishie/potential" target="_blank">available on Github</a>, however.
+            </p>
+            <p>
+                This game was one of the projects that initially got me
+                interested in game development, particularly rendering. Many
+                of the techniques I learned here made their way into Larwan, my
+                tree-based rendering engine, and then the demoscene.
+            </p>
+
+            <nav>
+                <a href="https://github.com/mrfishie/potential" target="_blank">GITHUB</a><a href="potential.html">GALLERY</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/falling-star.png" width="200" height="200"/>
+        <div>
+            <h3><a href="falling-star.html">FALLING STAR</a></h3>
+            <p>
+                Falling Star was one of my first forays into animation and
+                video production. It was a short film, created in Adobe Flash,
+                for a school media assignment.
+            </p>
+            <p>
+                The project taught me various things about animating and
+                rendering, including the basics of keyframing, boning and dirty
+                rendering.
+            </p>
+
+            <nav>
+                <a href="falling-star.html">WATCH</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/mozzo.png" width="200" height="200"/>
+        <div>
+            <h3>MOZZO</h3>
+            <p>
+                Mozzo was an ambitious project to develop a social network
+                aggregator, capable of bringing in data from many different
+                social networks and displaying them together. The project was
+                created by a friend and I, however most of the work on the site
+                was done by myself.
+            </p>
+            <p>
+                The site's frontend was written in modern responsive HTML/CSS,
+                and the backend in PHP. For this project I took some of the
+                framework code I had developed for Playzone and turned it into
+                a proper PHP framework, called LimePHP. This framework provided
+                many features such as templating, routing, database handling,
+                package managing, and lazy-loaded modules. It was later
+                improved for, and used by, The Problem.
+            </p>
+            <p>
+                Mozzo was my third entry to the Young ICT Explorers competition,
+                submitted to the much more competitive year 10-12 category.
+                Unfortunately it did not place, likely due to it's incompletion
+                at competition time (we had only had time to properly implement
+                and test one social network, Facebook).
+            </p>
+            <p>
+                Originally the plan was to continue mozzo and attempt to get it
+                out to the world, however both members of our team became too
+                busy with school to continue work on it.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/glass.png" width="200" height="200"/>
+        <div>
+            <h3>GLASS</h3>
+            <p>
+                A friend and I started working on Glass, a search engine written
+                in PHP, in early 2014. Glass was primarily created as a learning
+                experience for us, and was designed to be slick and easy to use.
+            </p>
+            <p>
+                In order to develop Glass, I created a custom web crawler
+                written in PHP. This involved learning about crawling and
+                scraping fundamentals. Additionally, I implemented various
+                algorithms for searching, including PageRank and some of my own.
+                Most of the user interface was developed by my friend, and the
+                backend by myself.
+            </p>
+        </div>
+    </div>
+
+    <h2>2013</h2>
+
+    <div>
+        <img src="../img/playzone.png" width="200" height="200"/>
+        <div>
+            <h3><a href="http://web.archive.org/web/20131112091254/http://playzone.mrfishie.com/" target="_blank">PLAYZONE</a></h3>
+            <p>
+                Playzone was my second entry to the Young ICT Explorers
+                competition, a Brisbane-based ICT competition for high-schoolers
+                run by SAP. It was an ambitious social network focused around
+                online Flash games. It offered user-submittable games,
+                customizable profiles, and a powerful admin system.
+            </p>
+            <p>
+                The Playzone backend was written in PHP5 with MySQL as the
+                database, with a modern and responsive HTML/CSS/Javascript
+                frontend. The site was completely designed and programmed by
+                myself.
+            </p>
+            <p>
+                Throughout the project I developed a basic PHP framework, which
+                would later become LimePHP (see mozzo and The Problem). This
+                project taught me many of the basics and principles in designing
+                web frameworks, administration and permission systems, and
+                social networks. Playzone achieved second place in the year
+                8-9 category of YICTE.
+            </p>
+
+            <nav>
+                <a href="http://web.archive.org/web/20131112091254/http://playzone.mrfishie.com/" target="_blank">ARCHIVE</a><a href="https://github.com/mrfishie/playzone" target="_blank">GITHUB</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/cubepals.png" width="200" height="200"/>
+        <div>
+            <h3><a href="cubepals.html">CUBEPALS</a></h3>
+            <p>
+                Cubepals, a game created for an IT assignment in mid-2013,
+                was my first foray into game development. The assignment's
+                task was to create a game that young children could play
+                in order to learn some skill - in this case, puzzle and
+                problem solving. The premise of the game was simple - get
+                all of the cubes onto the buttons of their respective
+                colours. This was made more complicated by walls that
+                couldn't be dragged through, walls that would only open when
+                a cube was on a button, and trampolines that would make a
+                cube jump.
+            </p>
+            <p>
+                The game was developed in Adobe Flash, using Actionscript 3.
+                Later in the year, I also started working on a version for
+                the Windows RT platform (built with HTML/CSS/Javascript),
+                however lost interest and became busy with other projects.
+            </p>
+
+            <nav>
+                <a href="cubepals.html">PLAY</a>
+            </nav>
+        </div>
+    </div>
+
+    <h2>2012</h2>
+
+    <div>
+        <img src="../img/reearth.png" width="200" height="200"/>
+        <div>
+            <h3><a href="http://web.archive.org/web/20131206100740/http://reearth.mrfishie.com/" target="_blank">REEARTH</a></h3>
+            <p>
+                ReEarth was a project completed by a friend and I for a school
+                SOSE assignment in late 2012. The site provided information on
+                renewable energies such as solar and biogas, and also provided
+                a couple of learning objects for interactive learning of the
+                subjects.
+            </p>
+            <p>
+                The site was primarily written in PHP, with a custom simple CMS
+                that would pull info from text files. The learning objects were
+                created in Adobe Flash. This project taught me a lot about
+                designing CMS's and full-stack websites with PHP, as well as
+                the basics of creating content in Flash, both of which were
+                beneficial to me in future projects.
+            </p>
+
+            <nav>
+                <a href="http://web.archive.org/web/20131206100740/http://reearth.mrfishie.com/" target="_blank">ARCHIVE</a>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/wordwiki.png" width="200" height="200"/>
+        <div>
+            <h3>WORDWIKI</h3>
+            <p>
+                Wordwiki was my first ever entry to the Young ICT Explorers
+                competition, a Brisbane-based ICT competition for high-schoolers
+                run by SAP. It was a simple wiki-like dictionary, where users
+                where able to search for and add words or definitions.
+            </p>
+            <p>
+                The site was written in modern HTML and Javascript with jQuery,
+                along with a PHP/MySQL backend. This was my first main
+                introduction to full-stack web development, and I continued
+                along that path for many years.
+            </p>
+            <p>
+                The project achieved 2nd place in the year 8-9 category at
+                YICTE, and development was stopped soon after due to interests
+                in different projects. Unfortunately I no longer have the source
+                code for it.
+            </p>
+        </div>
+    </div>
+
+    <div>
+        <img src="../img/speedsync.png" width="200" height="200"/>
+        <div>
+            <h3><a href="speedsync.html">SPEEDSYNC</a></h3>
+            <p>
+                In order to fill a hole I saw in simple software to backup
+                USBs, I created Speedsync in early 2012. This was a simple
+                program written in C# and WinForms that allowed two locations
+                to be synced, a USB to be automatically synced when plugged
+                in, and more.
+            </p>
+            <p>
+                The software reached a suitable feature and stability level
+                later that year, and so development was stopped. While I
+                personally do not still use Speedsync, I know of at least one
+                friend who used it up until recently.
+            </p>
+
+            <nav>
+                <a href="speedsync.html">DOWNLOAD</a>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p><a href="https://twitter.com/copodt" target="_blank">TWITTER</a> · <a href="https://github.com/cpdt" target="_blank">GITHUB</a> · <a href="http://www.pouet.net/user.php?who=100313" target="_blank">POUET</a> · <a href="https://keybase.io/cpdt" target="_blank">KEYBASE</a> · <a href="mailto:tom@barhams.info">CONTACT</a></p>
+    <p>With &hearts; from Brisbane, Australia</p>
+</footer>
+
+</body>
+</html>

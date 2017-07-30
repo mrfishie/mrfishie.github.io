@@ -1,0 +1,29 @@
+{
+    "Centuries": {
+        "seconds": 3155973600
+    },
+    "Decades": {
+        "seconds": 315569520
+    },
+	"Years": {
+		"seconds": 31536000
+	},
+	"Months": {
+		"seconds": 2628000
+	},
+	"Weeks": {
+		"seconds": 604800
+	},
+	"Days": {
+		"seconds": 86400
+	},
+	"Hours": {
+		"seconds": 3600
+	},
+	"Minutes": {
+		"seconds": 60
+	},
+	"Seconds": {
+		"seconds": 1
+	}
+}
